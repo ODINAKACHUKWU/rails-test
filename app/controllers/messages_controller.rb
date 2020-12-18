@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     if params[:filter].blank? || params[:filter]
-      @messages = Message.all
+      @messages = Message.all.order(created_at: :desc)
     else
       my_ip = request.remote_ip
       @messages = Message.by_ip_address(my_ip)
