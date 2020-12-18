@@ -3,5 +3,8 @@ class Message < ApplicationRecord
   validates :name, :entry, :ip_address, presence: true
 
   scope :by_ip_address, ->(ip) { where(ip_address: ip) }
-  # scope :hidden, -> { where(hidden: true) }
+
+  def hidden?
+    hidden
+  end
 end
