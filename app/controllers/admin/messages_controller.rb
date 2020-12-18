@@ -9,7 +9,9 @@ class Admin::MessagesController < ApplicationController
     @message.hidden = !@message.hidden
 
     if @message.save
-      redirect_to admin_messages_path
+      respond_to do |format|
+        format.js { render partial: 'hide', object: @message }
+      end
     end
   end
 

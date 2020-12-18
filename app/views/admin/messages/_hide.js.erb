@@ -1,0 +1,9 @@
+$.fn.toggleButton = function() {
+if ("<%= display_text(@message) %>" === "Show") {
+$("<%= "#message-#{@message.id}" %>").css('color', 'red')
+} else {
+$("<%= "#message-#{@message.id}" %>").css('color', 'black')
+}
+this.html("<%= display_text(@message) %>")
+}
+$("<%= "#button-text-#{@message.id}" %>").toggleButton();
